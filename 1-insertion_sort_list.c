@@ -22,7 +22,7 @@ void insertion_sort_list(listint_t **list)
 			*(int *)&tmp->n = tmp->next->n;
 			*(int *)&tmp->next->n = temp;
 			print_list(*list);
-			while (tmp && tmp->prev && tmp->n < tmp->prev->n)
+			while (tmp->prev && tmp->n < tmp->prev->n)
 			{
 				tmp = tmp->prev;
 				temp = (int)tmp->n;
@@ -45,7 +45,7 @@ int unsorted_list(listint_t **list)
 {
 	listint_t *tmp = *list;
 
-	while (tmp)
+	while (tmp && tmp->next)
 	{
 		if (tmp->n > tmp->next->n)
 			return (1);
