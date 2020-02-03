@@ -45,7 +45,7 @@ int unsorted_list(listint_t **list)
 {
 	listint_t *tmp = *list;
 
-	while (tmp)
+	while (tmp->next)
 	{
 		if (tmp->n > tmp->next->n)
 			return (1);
