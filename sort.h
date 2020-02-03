@@ -33,5 +33,7 @@ void quick_sort(int *array, size_t size);
 /* Auxiliar Functions */
 int unsorted(int *array, size_t size);
 int unsorted_list(listint_t **list);
+int new_array(int *array, int left, int right, size_t size);
+void Qsort(int *array, int left, int right, size_t size);
 
 #endif /* SORT_H */
