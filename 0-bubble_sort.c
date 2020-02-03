@@ -23,7 +23,7 @@ void bubble_sort(int *array, size_t size)
 				array[i] = array[i + 1];
 				array[i + 1] = aux;
 				print_array(array, size);
-				if (!unsorted(&array[i + 1], size - i) || !(size - i))
+				if (!unsorted(&array[i + 1], size - i) || (size - i))
 					break;
 			}
 		}
@@ -33,6 +33,7 @@ void bubble_sort(int *array, size_t size)
 /**
  * unsorted - Verify if an array is unsorted
  * @array: Array
+ * @size: Size
  *
  * Description: Verify if an array is unsorted
  * Return: 1 if it's unsorted 0 otherwise
