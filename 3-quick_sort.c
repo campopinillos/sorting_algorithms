@@ -65,24 +65,20 @@ int new_array(int *array, int left, int right, size_t size)
 }
 
 /**
- * swap - swaps 2 int values
+ * swap - Swaps two int values
  * @array: the integer array to sort
+ * @left: address of first value
+ * @right: address of second value
  * @size: the size of the array
- * @a: address of first value
- * @b: address of second value
  *
- * Return: void
+ * Return: Void
  */
 void swap(int *array, int *left, int *right, size_t size)
 {
 	int temp;
-	
-	if (*left != *right)
-	{
-		temp = *left;
-		*left = *right;
-		*right = temp;
-		print_array((const int *)array, size);
-	}
 
+	temp = *left;
+	*left = *right;
+	*right = temp;
+	print_array((const int *)array, size);
 }
