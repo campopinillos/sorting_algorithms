@@ -1,5 +1,4 @@
 #include "sort.h"
-int unsorted(int *array);
 /**
  * bubble_sort - Sorts an array of integers in ascending order
  * @array: Array
@@ -14,7 +13,7 @@ void bubble_sort(int *array, size_t size)
 	size_t i = 0;
 	int aux;
 
-	while (unsorted(array))
+	while (unsorted(array, size))
 	{
 		for (i = 0; i < size && array[i + 1]; i++)
 		{
@@ -24,7 +23,7 @@ void bubble_sort(int *array, size_t size)
 				array[i] = array[i + 1];
 				array[i + 1] = aux;
 				print_array(array, size);
-				if (!unsorted(&array[i + 1]))
+				if (!unsorted(&array[i + 1], size - i))
 					break;
 			}
 		}
@@ -38,11 +37,11 @@ void bubble_sort(int *array, size_t size)
  * Description: Verify if an array is unsorted
  * Return: 1 if it's unsorted 0 otherwise
  */
-int unsorted(int *array)
+int unsorted(int *array, size_t size)
 {
 	size_t j = 0;
 
-	while (array[j] && array[j + 1])
+	while (array[j] && array[j + 1] && size > 0)
 	{
 		if (array[j] > array[j + 1])
 			return (1);

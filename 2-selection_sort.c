@@ -1,5 +1,4 @@
 #include "sort.h"
-int unsorted(int *array);
 /**
  * selection_sort - Sorts an array in ascending order
  * @array: Array

@@ -1,5 +1,4 @@
 #include "sort.h"
-int unsorted_list(listint_t **list);
 /**
  * insertion_sort_list - Sorts doubly linked list in ascending order
  * @list: Double Link
@@ -44,7 +43,7 @@ int unsorted_list(listint_t **list)
 {
 	listint_t *tmp = *list;
 
-	while (tmp->next)
+	while (tmp && tmp->next)
 	{
 		if (tmp->n > tmp->next->n)
 			return (1);
