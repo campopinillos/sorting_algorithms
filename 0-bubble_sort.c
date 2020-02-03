@@ -23,7 +23,7 @@ void bubble_sort(int *array, size_t size)
 				array[i] = array[i + 1];
 				array[i + 1] = aux;
 				print_array(array, size);
-				if (!unsorted(&array[i + 1], size - i) || size - i < 0)
+				if (!unsorted(&array[i + 1], size - i) || !(size - i))
 					break;
 			}
 		}
