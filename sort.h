@@ -35,5 +35,6 @@ int unsorted(int *array, size_t size);
 int unsorted_list(listint_t **list);
 int new_array(int *array, int left, int right, size_t size);
 void Qsort(int *array, int left, int right, size_t size);
+void swap(int *array, int *left, int *right, size_t size);
 
 #endif /* SORT_H */

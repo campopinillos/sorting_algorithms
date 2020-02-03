@@ -57,8 +57,8 @@ int new_array(int *array, int left, int right, size_t size)
 
 	for (; j < right; j++)
 	{
-		if (array[j] <= pivot)
-			swap(array, &array[j], &array[i++], size);
+		if (array[j] < pivot)
+			swap(array, &array[i++], &array[j], size);
 	}
 	swap(array, &array[i], &array[right], size);
 	return (i);
@@ -77,8 +77,11 @@ void swap(int *array, int *left, int *right, size_t size)
 {
 	int temp;
 
-	temp = *left;
-	*left = *right;
-	*right = temp;
-	print_array((const int *)array, size);
+	if (*left != *right)
+	{
+		temp = *left;
+		*left = *right;
+		*right = temp;
+		print_array(array, size);
+	}
 }
