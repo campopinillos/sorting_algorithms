@@ -10,41 +10,41 @@
  */
 void counting_sort(int *array, size_t size)
 {
-	int *a;
-	size_t max, sum = 0, i = 0, j = 0, n, count = 0;
+	int *count, *output, index;
+	size_t max, i = 0;
 
 	if (!array || !size)
 		return;
 	max = array[0];
-	while (array[i])
+	while (i < size)
 	{
 		if (array[i] > (int) max)
 			max = array[i];
 		i++;
 	}
-	a = malloc(sizeof(int) * (max + 1));
-	if (!a)
+	count = malloc(sizeof(int) * (max + 1));
+	if (!count)
 		return;
-	for (i = 0; i < max + 1; i++)
-		a[i] = 0;
+	for (i = 0; i <= max; i++)
+		count[i] = 0;
+	output = malloc(sizeof(int) * (size));
+	if (!count)
+		return;
 	for (i = 0; i < size; i++)
-		a[array[i]] += 1;
-	for (i = 0; i < max + 1; i++)
+		count[array[i]] += 1;
+	for (i = 0; i <= max; i++)
 	{
-		if (a[i] == 0)
-			a[i] = a[i] + sum;
-		else
-		{
-			sum += a[i];
-			a[i] = sum;
-		}
+		count[i] += count[i - 1];
 	}
-	print_array(a, max + 1);
+	print_array(count, max + 1);
 	for (i = 0; i < size; i++)
 	{
-		n = a[j];
-		while (a[j++] == (int) n)
-			count++;
-		array[i] = count++;
+		index = count[array[i]] - 1;
+		output[index] = array[i];
+		count[array[i]] -= 1;
 	}
+	for (i = 0; i < size; i++)
+		array[i] = output[i];
+	free(output);
+	free(count);
 }
