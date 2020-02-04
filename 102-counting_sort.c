@@ -25,16 +25,16 @@ void counting_sort(int *array, size_t size)
 	if (!count)
 		return;
 	output = malloc(sizeof(int) * (size));
-	if (!count)
+	if (!output)
 		return;
-	for (i = 0; i < max + 1; i++)
+	for (i = 0; i <= max; i++)
 		count[i] = 0;
 	for (i = 0; i < size; i++)
 		count[array[i]] += 1;
-	for (i = 1; i < max + 1; i++)
+	for (i = 1; i <= max; i++)
 		count[i] += count[i - 1];
 	print_array(count, max + 1);
-	for (i = size - 1; (int) i >= 0; i--)
+	for (i = 0; i < size; i++)
 	{
 		index = count[array[i]] - 1;
 		output[index] = array[i];
