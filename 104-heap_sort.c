@@ -12,16 +12,16 @@ void swap(int *array, int *left, int *right, size_t size);
  */
 void heap_sort(int *array, size_t size)
 {
-	size_t start, end;
+	int start, end;
 
 	if (!array || size < 2)
 		return;
-	for (start = (size / 2) - 1; (int) start >= 0; start--)
-		heapify(array, start, size, size);
-	for (end = size - 1; (int) end >= 0; end--)
+	for (start = (size / 2) - 1; start >= 0; start--)
+		heapify(array, (size_t) start, size, size);
+	for (end = size - 1; end >= 0; end--)
 	{
 		swap(array, &array[0], &array[end], size);
-		heapify(array, 0, end, size);
+		heapify(array, 0, (size_t) end, size);
 	}
 }
 /**
