@@ -1,6 +1,6 @@
 #include "sort.h"
-void heapify(int *array, size_t start, size_t end, size_t size);
 void swap(int *array, int *left, int *right, size_t size);
+void heapify(int *array, size_t start, size_t end, size_t size);
 /**
  * heap_sort - Sorts an array in ascending order
  * @array: Array
@@ -16,7 +16,7 @@ void heap_sort(int *array, size_t size)
 
 	if (!array || size < 2)
 		return;
-	for (start = (size / 2) - 1; start >= 0; start--)
+	for (start = size / 2 - 1; start >= 0; start--)
 		heapify(array, (size_t) start, size, size);
 	for (end = size - 1; end >= 0; end--)
 	{
@@ -37,12 +37,12 @@ void heap_sort(int *array, size_t size)
 void heapify(int *array, size_t start, size_t end, size_t size)
 {
 	int largest = start;
-	int left = (2 * start) + 1;
-	int right = (2 * start) + 2;
+	int left = 2 * start + 1;
+	int right = 2 * start + 2;
 
-	if (left <= (int) end && array[left] > array[largest])
+	if (left < (int) end && array[left] > array[largest])
 		largest = left;
-	if (right <= (int) end && array[right] > array[largest])
+	if (right < (int) end && array[right] > array[largest])
 		largest = right;
 	if (largest != (int) start)
 	{
@@ -64,7 +64,7 @@ void swap(int *array, int *left, int *right, size_t size)
 {
 	int temp;
 
-	if (*left != *right)
+	if (left != right)
 	{
 		temp = *left;
 		*left = *right;
