@@ -17,10 +17,10 @@ void heap_sort(int *array, size_t size)
 	if (!array || !size || size < 2)
 		return;
 	for (start = (size / 2) - 1; (int) start >= 0; start--)
-		heapify(array, start, size - 1, size);
+		heapify(array, start, size, size);
 	for (end = size - 1; (int) end >= 0; end--)
 	{
-		swap(array, &array[end], &array[0], size);
+		swap(array, &array[0], &array[end], size);
 		heapify(array, 0, end, size);
 	}
 }
