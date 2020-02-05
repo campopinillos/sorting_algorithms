@@ -40,9 +40,9 @@ void heapify(int *array, size_t start, size_t end, size_t size)
 	int left = (2 * start) + 1;
 	int right = (2 * start) + 2;
 
-	if (left < (int) end && array[left] > array[largest])
+	if (left <= (int) end && array[left] > array[largest])
 		largest = left;
-	if (right < (int) end && array[right] > array[largest])
+	if (right <= (int) end && array[right] > array[largest])
 		largest = right;
 	if (largest != (int) start)
 	{
