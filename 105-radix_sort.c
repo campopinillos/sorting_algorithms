@@ -1,8 +1,9 @@
 #include "sort.h"
+int getmax(int *array, size_t size);
 /**
  * radix_sort - Sorts an array in ascending order
  * @array: Array
- * @size: Pointer to the previous element of the list
+ * @size: Size of the array
  *
  * Description: Sorts an array of integers in ascending
  * order using the Radix sort algorithm
@@ -11,25 +12,20 @@
 void radix_sort(int *array, size_t size)
 {
 	int *new_array, *count, *output;
-	int max, i = 0, j, digits = 10, itter = 1, divisor = 1, try;
+	int max, i, j, digits = 10, itter = 1, divisor = 1, try;
 
 	if (!array || size < 2)
 		return;
-	max = array[0];
-	while (i < (int) size)
-	{
-		if (array[i] > (int) max)
-			max = array[i];
-		i++; }
+	max = getmax(array, size);
 	while (max / digits > 0)
 	{	itter++;
 		digits *= 10; }
-	count = malloc(sizeof(int) * (max + 1));
+	count = malloc(sizeof(int) * 10);
 	if (!count)
 		return;
-	for (i = 0; i < (int) size; i++)
+	for (i = 0; i < 10; i++)
 		count[i] = 0;
-	new_array = malloc(sizeof(int) * (max + 1));
+	new_array = malloc(sizeof(int) * (size));
 	if (!new_array)
 		return;
 	output = malloc(sizeof(int) * (size));
@@ -40,13 +36,36 @@ void radix_sort(int *array, size_t size)
 		for (j = 0; j < (int) size; j++)
 		{	new_array[j] = ((array[j]) / divisor) % 10;
 			count[new_array[j]] += 1; }
-		for (i = 1; i < (int)  size; i++)
+		for (i = 1; i < 10; i++)
 			count[i] += count[i - 1];
 		for (i = size - 1; (int) i >= 0; i--)
 		{	output[count[new_array[i]] - 1] = array[i];
 			count[new_array[i]] -= 1; }
 		for (i = 0; i < (int) size; i++)
-		{	array[i] = output[i];
-			count[i] = 0; }
+			array[i] = output[i];
+		for (i = 0; i < 10; i++)
+			count[i] = 0;
 		print_array(array, size); }
+}
+
+/**
+ * getmax - Maxim number in array
+ * @array: Array
+ * @size: Size of the array
+ *
+ * Description: Sorts an array of integers in ascending
+ * order using the Radix sort algorithm
+ * Return: Void
+ */
+int getmax(int *array, size_t size)
+{
+	int max = array[0], i = 0;
+
+	while (i < (int) size)
+	{
+		if (array[i] > (int) max)
+			max = array[i];
+		i++;
+	}
+	return (max);
 }
