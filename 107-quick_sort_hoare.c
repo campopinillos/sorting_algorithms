@@ -55,7 +55,7 @@ int hoare(int *array, int left, int right, size_t size)
 	int pivot = array[right];
 	int i = left, j = right;
 
-	while (i < (int) size)
+	while (i < (int) size + 1)
 	{
 		while (array[i] < pivot)
 			i++;
