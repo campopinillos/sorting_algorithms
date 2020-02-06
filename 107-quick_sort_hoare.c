@@ -53,14 +53,14 @@ void Qsort(int *array, int left, int right, size_t size)
 int hoare(int *array, int left, int right, size_t size)
 {
 	int pivot = array[right];
-	int i = left - 1, j = right + 1;
+	int i = left, j = right;
 
 	while (i < (int) size)
 	{
-		while (array[++i] < pivot)
-			;
-		while (array[--j] > pivot)
-			;
+		while (array[i] < pivot)
+			i++;
+		while (array[j] > pivot)
+			j--;
 		if (i >= j)
 			break;
 		swap(array, &array[i], &array[j], size);
