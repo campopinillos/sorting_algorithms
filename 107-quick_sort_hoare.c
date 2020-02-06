@@ -55,12 +55,12 @@ int hoare(int *array, int left, int right, size_t size)
 	int pivot = array[right];
 	int i = left, j = right;
 
-	while (i < (int) size + 1)
+	while (i < (int) size)
 	{
 		while (array[i] < pivot)
-			i++;
+			++i;
 		while (array[j] > pivot)
-			j--;
+			--j;
 		if (i >= j)
 			break;
 		swap(array, &array[i], &array[j], size);
